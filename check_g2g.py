@@ -1,4 +1,4 @@
-import requests
+import requests, os
 from bs4 import BeautifulSoup
 
 URL = "https://www.g2g.com/dreamsmurfs"
