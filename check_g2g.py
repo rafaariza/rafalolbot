@@ -36,6 +36,10 @@ def website_contains_no_offer():
 
 
 def main():
+    response = requests.get(URL, headers=headers, timeout=20)
+    response.raise_for_status()
+
+    print(response.text[:5000])
     try:
         if website_contains_no_offer():
             send_telegram("❌ No offer")
