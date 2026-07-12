@@ -37,17 +37,12 @@ def website_contains_no_offer():
 
 def main():
     try:
-        if not website_contains_no_offer():
-            send_telegram(
-                "🚨 G2G DreamSmurfs appears to have offers available!\n"
-                f"{URL}"
-            )
-            print("Offer detected. Telegram message sent.")
+        if website_contains_no_offer():
+            send_telegram("❌ No offer")
         else:
-            print("'No offer yet' found.")
+            send_telegram(f"🚨 Offer available!\n{URL}")
     except Exception as e:
-        send_telegram(f"Website check failed:\n{e}")
-        print(e)
+        send_telegram(f"⚠️ Error checking website:\n{e}")
 
 
 if __name__ == "__main__":
