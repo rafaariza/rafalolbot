@@ -38,9 +38,9 @@ def website_contains_no_offer():
         print("=" * 50)
         print(text)
         print("=" * 50)
-
-        browser.close()
         page.screenshot(path="page.png", full_page=True)
+        browser.close()
+
         return "No offer yet" in text
 
 
