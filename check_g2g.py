@@ -23,23 +23,24 @@ def website_contains_no_offer():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
 
-        page = browser.new_page(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) "
-                "Chrome/137.0.0.0 Safari/537.36"
-            )
-        )
+        page = browser.new_page()
 
-        page.goto(URL, wait_until="networkidle", timeout=60000)
+        page.goto(URL, wait_until="domcontentloaded", timeout=60000)
 
-        # Give JavaScript a little extra time
-        page.wait_for_timeout(3000)
+        # Wait until the page finishes rendering
+        page.wait_for_timeout(5000)
+
+        print("Current URL:", page.url)
+        print("Title:", page.title())
 
         text = page.locator("body").inner_text()
 
-        browser.close()
+        print("=" * 50)
+        print(text)
+        print("=" * 50)
 
+        browser.close()
+        page.screenshot(path="page.png", full_page=True)
         return "No offer yet" in text
 
 
