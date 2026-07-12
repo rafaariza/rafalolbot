@@ -2,7 +2,7 @@ import os
 import requests
 from playwright.sync_api import sync_playwright
 
-URL = "https://www.g2g.com/mytikasforge"
+URL = "https://www.g2g.com/dreamsmurfs"
 
 BOT_TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
@@ -38,7 +38,7 @@ def website_contains_no_offer():
         print("=" * 50)
         print(text)
         print("=" * 50)
-        page.screenshot(path="page.png", full_page=True)
+        
         browser.close()
 
         return "No offer yet" in text
