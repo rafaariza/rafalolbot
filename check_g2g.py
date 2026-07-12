@@ -2,7 +2,7 @@ import os
 import requests
 from playwright.sync_api import sync_playwright
 
-URL = "https://www.g2g.com/dreamsmurfs"
+URL = "https://www.g2g.com/mytikasforge"
 
 BOT_TOKEN = os.environ["TELEGRAM_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
